@@ -3,6 +3,7 @@ package khoapham.ptp.phamtanphat.freakingmath1005;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,31 @@ public class MainActivity extends AppCompatActivity {
         imgDung = findViewById(R.id.imagebuttontrue);
         imgSai = findViewById(R.id.imagebuttonfalse);
 
+        random();
+        imgDung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (check == true){
+                    Toast.makeText(MainActivity.this, "Chinh xac!!", Toast.LENGTH_SHORT).show();
+                    random();
+                }else {
+                    Toast.makeText(MainActivity.this, "Sai roi", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        imgSai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (check == false){
+                    Toast.makeText(MainActivity.this, "Chinh xac!!", Toast.LENGTH_SHORT).show();
+                    random();
+                }else {
+                    Toast.makeText(MainActivity.this, "Sai roi", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    private void random(){
         Random random = new Random();
         int number1 = random.nextInt(10) + 1;
         int number2 = random.nextInt(10) + 1;
@@ -62,10 +88,8 @@ public class MainActivity extends AppCompatActivity {
         if(check == false){
             ketqua += 5;
         }
-        Toast.makeText(this, check + "", Toast.LENGTH_SHORT).show();
         txtNumber1.setText(number1 + "");
         txtNumber2.setText(number2 + "");
         txtKetqua.setText(" = " + ketqua);
-
     }
 }
